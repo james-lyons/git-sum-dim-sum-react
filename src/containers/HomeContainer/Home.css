@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../images/dim-sum-background-2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+

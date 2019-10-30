@@ -17,7 +17,7 @@ export default withRouter(() => {
     return (
         <Switch>
             <Route exact path='/' component={ Home } />
-            <Route path='/profile' component={ Profile } />
+            <PrivateRoute path='/profile' component={ Profile } />
         </Switch>
     );
 });
