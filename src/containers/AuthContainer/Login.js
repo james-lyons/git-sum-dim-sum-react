@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import LoginComponent from '../../components/Auth/Login/LoginComponent';
+import LoginComponent from '../../components/AuthComponent/Login/LoginComponent';
 import { userLogin } from '../../actions/authActions';
 
 class Login extends React.Component {

@@ -1,0 +1,30 @@
+#restaurants-div {
+    margin: 0 auto;
+    height: 75vh;
+    width: 75vw;
+    overflow-y: auto;
+}
+
+.restaurant-card {
+    background-color: goldenrod;
+    padding: 2rem;
+    margin: 1.5rem;
+    border: 1px solid black;
+}
+
+.col-row {
+    justify-content: center;
+}
+
+.restaurant-image-div {
+    justify-content: center;
+    width: 85%;
+    margin: 0 auto 2rem;
+}
+
+.restaurant-image {
+    width: 13vw;
+    height: 15vh;
+}
+
+/* ----- Media Queries ----- */

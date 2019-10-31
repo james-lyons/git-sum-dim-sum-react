@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { userRegister } from '../../actions/authActions';
-import RegisterComponent from '../../components/Auth/Register/RegisterComponent';
+import RegisterComponent from '../../components/AuthComponent/Register/RegisterComponent';
 
 class Register extends React.Component {
     state = {

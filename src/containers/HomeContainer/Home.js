@@ -1,5 +1,7 @@
 import React from 'react';
 import './Home.css';
+import SearchBar from '../SearchContainer/SearchBar';
+import Restaurants from '../RestaurantsContainer/Restaurants';
 
 class Home extends React.Component {
     state = {
@@ -9,7 +11,8 @@ class Home extends React.Component {
     render() {
         return (
             <>
-                <div>This is the Home Page</div>
+                <SearchBar />
+                <Restaurants />
             </>
         );
     };
