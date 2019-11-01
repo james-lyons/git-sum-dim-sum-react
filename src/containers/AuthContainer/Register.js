@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { userRegister } from '../../actions/authActions';
 import RegisterComponent from '../../components/AuthComponent/Register/RegisterComponent';
+import './AuthContainer.css';
 
 class Register extends React.Component {
     state = {
@@ -10,7 +11,6 @@ class Register extends React.Component {
         email: null,
         password: null,
         password2: null,
-        errors: null,
         modalShow: false,
         errors: null,
     };
@@ -27,8 +27,7 @@ class Register extends React.Component {
             password: this.state.password,
             password2: this.state.password2
         }
-        console.log(user)
-        this.props.userRegister(user)
+        this.props.userRegister(user);
     };
 
     handleModalShow = () => {
@@ -40,7 +39,7 @@ class Register extends React.Component {
     render() {
         return (
             <> 
-                <Button variant="primary" onClick={ () => this.handleModalShow() }>
+                <Button variant="primary auth-button" onClick={ () => this.handleModalShow() }>
                     Register
                 </Button>
                 <RegisterComponent 

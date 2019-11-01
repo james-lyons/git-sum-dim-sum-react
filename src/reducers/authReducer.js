@@ -10,7 +10,7 @@ function authReducer(state = {
 
     switch(action.type) {
         case "USER_REGISTER_FULFILLED":
-            return {...state};
+            return {...state };
         
         case "USER_REGISTER_REJECTED":
             return { ...state, errors: action.payload }

@@ -5,7 +5,7 @@ const userRegister = (newUser) => {
     return dispatch => {
         return axios.post(`${ API_URL }/auth/register`, newUser, { withCredentials: true })
             .then(res => {
-                console.log(res)
+                window.location.reload();
                 dispatch({ type: "USER_REGISTER_FULFILLED", payload: res.data })
             })
             .catch(err => {
@@ -18,9 +18,9 @@ const userLogin = (user) => {
     return dispatch => {
         return axios.post(`${ API_URL }/auth/login`, user, { withCredentials: true })
             .then(res => {
-                dispatch({ type: "USER_LOGIN_FULFILLED", payload: res.data })
-                localStorage.setItem('uid', res.data.data._id)
                 window.location.reload();
+                localStorage.setItem('uid', res.data.data._id)
+                dispatch({ type: "USER_LOGIN_FULFILLED", payload: res.data })
             })
             .catch(err => {
                 dispatch({ type: "USER_LOGIN_REJECTED", payload: err.response.data })

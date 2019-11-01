@@ -7,15 +7,18 @@ const RestaurantsComponent = (props) => {
 
     const mapRestaurants = (restaurants) => {
         const restaurantsArray = restaurants.map(restaurant => 
-            <Col className="restaurant-card col-3">
-                    <div className="restaurant-image-div">
-                        <img src={ restaurant.image } className="restaurant-image" alt="restaurant"></img>     
-                    </div>
-                    <div>
-                        <h5>{ restaurant.name }</h5>
-                        <h5>Address: { restaurant.address }</h5>
-                        <h5>Reviews: { restaurant.reviews.length}</h5>
-                    </div>
+            <Col
+                className="restaurant-card col-3"
+                onClick={ () => { props.selectRestaurant(restaurant.slug) }}
+            >
+                <div className="restaurant-image-div">
+                    <img src={ restaurant.image } className="restaurant-image" alt="restaurant"></img>     
+                </div>
+                <div>
+                    <h5>{ restaurant.name }</h5>
+                    <h5>Address: { restaurant.address }</h5>
+                    <h5>Reviews: { restaurant.reviews.length}</h5>
+                </div>
             </Col>
         );
         return restaurantsArray;

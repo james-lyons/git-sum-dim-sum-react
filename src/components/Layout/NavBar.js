@@ -6,7 +6,7 @@ import Login from '../../containers/AuthContainer/Login';
 import { userLogout } from '../../actions/authActions';
 import './NavBar.css';
 
-const NavBar = () => {
+const NavBar = (props) => {
 
     const currentUser = localStorage.getItem('uid');
 

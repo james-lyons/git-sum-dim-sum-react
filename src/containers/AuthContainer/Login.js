@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import LoginComponent from '../../components/AuthComponent/Login/LoginComponent';
 import { userLogin } from '../../actions/authActions';
+import './AuthContainer.css';
 
 class Login extends React.Component {
     state = {
@@ -21,22 +22,20 @@ class Login extends React.Component {
         const user = {
             email: this.state.email,
             password: this.state.password
-        }
-        console.log(user)
-        this.props.userLogin(user)
+        };
+        this.props.userLogin(user);
     };
 
     handleModalShow = () => {
         this.setState({
             modalShow: !this.state.modalShow
         });
-        console.log(this.state.modalShow)
     };
 
     render() {
         return (
             <>
-                <Button variant="primary" onClick={ () => this.handleModalShow() }>
+                <Button variant="primary auth-button" onClick={ () => this.handleModalShow() }>
                     Login
                 </Button>
                 <LoginComponent 

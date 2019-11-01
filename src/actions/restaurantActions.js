@@ -25,17 +25,16 @@ const fetchRestaurants = (name, city) => {
                 })
                 .catch(err => {
                     console.log(err.data);
-                    dispatch({ type: "FETCH_RESTAURANTS_REJECTED", payload: err.data})
+                    dispatch({ type: "FETCH_RESTAURANTS_REJECTED", payload: err.response.data})
                 });
     };
 };
 
-const fetchRestaurant = (restaurant) => {
+const fetchRestaurant = (restaurant_slug) => {
     return dispatch => {
-        return axios.get(`${ API_URL }/restaurants/${ restaurant }`, { withCredentials: true })
+        return axios.get(`${ API_URL }/restaurants/${ restaurant_slug }`, { withCredentials: true })
             .then(res => {
-                console.log(res);
-                dispatch({ type: "FETCH_RESTAURANT_FULFILLED", payload: res.data});
+                dispatch({ type: "FETCH_RESTAURANT_FULFILLED", payload: res.data.data});
             })
             .catch(err => {
                 console.log(err.data);

@@ -6,7 +6,7 @@ function restaurantReducer( state = {
         phone: null,
         hours: null,
         menuLink: null,
-        reviews: null,
+        reviews: [],
         image: null,
     },
     errors: null,
@@ -15,7 +15,7 @@ function restaurantReducer( state = {
     
     switch(action.type) {
         case "FETCH_RESTAURANTS_FULFILLED":
-            return { ...state, restaurants: null, restaurants: action.payload }
+            return { ...state, restaurants: action.payload }
 
         case "FETCH_RESTAURANTS_REJECTED":
             return { ...state, errors: action.payload.errors, message: action.payload.message }

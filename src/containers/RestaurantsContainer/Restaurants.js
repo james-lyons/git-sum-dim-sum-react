@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RestaurantsComponents from '../../components/RestaurantsComponent/RestaurantsComponents';
-import { fetchAllRestaurants } from '../../actions/restaurantActions';
+import { fetchAllRestaurants, fetchRestaurant } from '../../actions/restaurantActions';
 
 class Restaurants extends React.Component {
     state = {
@@ -14,10 +14,14 @@ class Restaurants extends React.Component {
             .then(this.setState({ restaurants: this.props.restaurants }));
     };
 
+    selectRestaurant = (restaurant_slug) => {
+        this.props.history.push(`/restaurant/${ restaurant_slug }`)
+    }
+
     render() {
         return (
             <>
-                <RestaurantsComponents />
+                <RestaurantsComponents selectRestaurant={ this.selectRestaurant }/>
             </>
         );
     };
@@ -29,4 +33,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { fetchAllRestaurants })(Restaurants);
+export default connect(mapStateToProps, { fetchAllRestaurants, fetchRestaurant })(Restaurants);

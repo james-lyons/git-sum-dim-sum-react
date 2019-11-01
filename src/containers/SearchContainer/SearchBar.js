@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SearchBarComponent from '../../components/SearchComponent/SearchBarComponent';
 import { fetchRestaurants } from '../../actions/restaurantActions';
-import { nextTick } from 'q';
 
 class SearchBar extends React.Component {
     state = {
@@ -21,14 +20,17 @@ class SearchBar extends React.Component {
         const name = this.state.name;
         const city = this.state.city;
         this.props.fetchRestaurants(name, city);
-        this.state.name === "" ? this.setState({ name: null }) : this.setState({name: ""})
-        this.state.city === "" ? this.setState({ city: null }) : this.setState({city: ""})
+        this.state.name === "" ? this.setState({ name: null }) : this.setState({name: ""});
+        this.state.city === "" ? this.setState({ city: null }) : this.setState({city: ""});
     }
 
     render() {
         return (
             <>
-                <SearchBarComponent handleChange={ this.handleChange } handleSubmit={ this.handleSubmit }/>
+                <SearchBarComponent
+                    handleChange={ this.handleChange }
+                    handleSubmit={ this.handleSubmit }
+                />
             </>
         );
     };
