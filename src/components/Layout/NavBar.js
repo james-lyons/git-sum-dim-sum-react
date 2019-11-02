@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom'
+import { Navbar, Nav, Button } from 'react-bootstrap';
 import Register from '../../containers/AuthContainer/Register';
 import Login from '../../containers/AuthContainer/Login';
 import { userLogout } from '../../actions/authActions';
@@ -35,8 +36,8 @@ const NavBar = (props) => {
                     <Nav className='mr-auto'>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="/profile">Profile</Nav.Link>
-                        <Nav.Link onClick={ userLogout }>Logout</Nav.Link>
+                        <Button onClick={ () => props.history.push('/profile') }>Profile</Button>
+                        <Button onClick={ userLogout }>Logout</Button>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

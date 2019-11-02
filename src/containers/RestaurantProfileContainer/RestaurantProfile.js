@@ -21,58 +21,12 @@ class RestaurantProfile extends React.Component {
         this.setState({
             reviewText: event.target.value
         });
+        console.log(this.state)
     };
 
     submitReview = (event) => {
         event.preventDefault();
-        console.log(this.state.reviewText)
-    };
-
-    editReview = (review_id) => {
-        return (
-            <Col className="col-12" style={{ display: this.state.edit_review_display }}>
-                <Form onSubmit={ () => this.props.editReview(review_id, this.state.reviewText )}>
-                    <Form.Row>
-                        <Form.Group className="col-12" controlId="edit-review">
-                            <Form.Control
-                                required
-                                name="reviewText"
-                                type="text"
-                                as="textarea"
-                                rows="4"
-                                onChange={ this.handleChange }
-                                placeholder="Edit review"
-                            />
-                        </Form.Group>
-                    </Form.Row>
-                </Form>
-            </Col>
-        )
-    };
-
-    deleteReview = () => {
-        console.log('delete')
-    }
-
-    mapReviews = (reviews) => {
-        const reviewArray = reviews.map(review => 
-            <div className="review-card">
-                <h1>Review: { review.author }</h1>
-                <h1>Review: { review.reviewText }</h1>
-            </div>
-        );
-        return reviewArray;
-    };
-
-    mapButtons = (review_id) => {
-        return (
-            <>
-                <div className="edit-and-delete-buttons">
-                    <Button className="edit-button" onClick={console.log('edit')}>Edit</Button>
-                    <Button className="edit-button" onClick={console.log('delete')}>Edit</Button>
-                </div>
-            </>
-        );
+        this.props.submitReview(this.state.reviewText, this.props.restaurant._id)
     };
 
     editReviewDisplay = () => {
@@ -85,9 +39,14 @@ class RestaurantProfile extends React.Component {
         return (
             <>
                 <RestaurantProfileComponent
+                    reviewErrors={ this.props.reviewErrors }
+                    reviewMessage={ this.props.reviewMessage }
+                    reviewText={ this.state.reviewText }
+                    edit_review_display={ this.state.edit_review_display }
                     handleChange={ this.handleChange }
+                    editReviewDisplay={ this.editReviewDisplay }
                     submitReview={ this.submitReview }
-                    deleteReview={ this.deleteReview }
+                    editReview={ this.editReview }
                     deleteReview={ this.deleteReview }
                 />
             </>
@@ -97,7 +56,9 @@ class RestaurantProfile extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        restaurant: state.restaurantReducer.restaurant
+        restaurant: state.restaurantReducer.restaurant,
+        reviewErrors: state.reviewReducer.errors,
+        reviewMessage: state.reviewReducer.message
     };
 };
 

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import API_URL from '../constants';
 
-const submitReview = (author, reviewText) => {
+const submitReview = (reviewText, restaurant_id) => {
     return dispatch => {
         return axios.post(`${ API_URL }/reviews`,
-        { author, reviewText }, { withCredentials: true })
+        { reviewText, restaurant_id }, { withCredentials: true })
             .then(res => {
                 dispatch({ type: 'REVIEW_SUBMIT_FULFILLED'});
                 window.location.reload();
@@ -16,13 +16,13 @@ const submitReview = (author, reviewText) => {
     };
 };
 
-const editReview = (review_id, reviewText) => {
+const editReview = (review_id, reviewText, ) => {
     return dispatch => {
         return axios.put(`${ API_URL }/reviews/${ review_id }`,
         { reviewText }, { withCredentials: true })
             .then(res => {
                 dispatch({ type: 'REVIEW_EDIT_FULFILLED'});
-                window.location.reload();
+                // window.location.reload();
             })
             .catch(err => {
                 console.log(err);

@@ -9,8 +9,8 @@ const fetchAllRestaurants = () => {
                 dispatch({ type: "FETCH_RESTAURANTS_FULFILLED", payload: res.data.data})
             })
             .catch(err => {
-                console.log(err.data);
-                dispatch({ type: "FETCH_RESTAURANTS_REJECTED", payload: err.data})
+                console.log(err.response.data);
+                dispatch({ type: "FETCH_RESTAURANTS_REJECTED", payload: err.responsexs.data})
             });
     };
 };
@@ -24,7 +24,7 @@ const fetchRestaurants = (name, city) => {
                     dispatch({ type: "FETCH_RESTAURANTS_FULFILLED", payload: res.data.data})
                 })
                 .catch(err => {
-                    console.log(err.data);
+                    console.log(err.response.data);
                     dispatch({ type: "FETCH_RESTAURANTS_REJECTED", payload: err.response.data})
                 });
     };
@@ -37,8 +37,8 @@ const fetchRestaurant = (restaurant_slug) => {
                 dispatch({ type: "FETCH_RESTAURANT_FULFILLED", payload: res.data.data});
             })
             .catch(err => {
-                console.log(err.data);
-                dispatch({ type: "FETCH_RESTAURANT_REJECTED", payload: err.data})
+                console.log(err);
+                dispatch({ type: "FETCH_RESTAURANT_REJECTED", payload: err})
             });
     };
 };
