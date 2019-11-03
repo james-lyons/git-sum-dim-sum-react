@@ -8,7 +8,7 @@ const RestaurantsComponent = (props) => {
     const mapRestaurants = (restaurants) => {
         const restaurantsArray = restaurants.map(restaurant => 
             <Col
-                className="restaurant-card col-3"
+                className="restaurants-section-cards col-3"
                 onClick={ () => { props.selectRestaurant(restaurant.slug) }}
             >
                 <div className="restaurant-image-div">

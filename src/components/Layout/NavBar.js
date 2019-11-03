@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import Register from '../../containers/AuthContainer/Register';
 import Login from '../../containers/AuthContainer/Login';
@@ -13,8 +12,13 @@ const NavBar = (props) => {
 
     const links = (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="dark" varient="light">
-                <Navbar.Brand href='/'>Git Sum Dim Sum</Navbar.Brand>
+            <Navbar className="nav-bar" collapseOnSelect expand="lg">
+                <Navbar.Brand href='/'>
+                    <span>
+                        <img className="nav-icon"src="./dumpling_icon.png" alt="icon"/>
+                    </span> 
+                        Git Sum Dim Sum
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto"></Nav>
@@ -29,15 +33,26 @@ const NavBar = (props) => {
 
     const authLinks = (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="dark" varient="dark">
-                <Navbar.Brand href='/'>Git Sum Dim Sum</Navbar.Brand>
+            <Navbar className="nav-bar" collapseOnSelect expand="lg">
+                <Navbar.Brand href='/'>
+                    <span>
+                        <img className="nav-icon"src="./dumpling_icon.png" alt="icon"/>
+                    </span> 
+                        Git Sum Dim Sum
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className='mr-auto'>
                     </Nav>
                     <Nav>
-                        <Button onClick={ () => props.history.push('/profile') }>Profile</Button>
-                        <Button onClick={ userLogout }>Logout</Button>
+                        <Button className="profile-button btn btn-light"
+                            onClick={ () => props.history.push('/profile') }>
+                                Profile
+                        </Button>
+                        <Button className="logout-button btn btn-light"
+                            onClick={ userLogout }>
+                                Logout
+                        </Button>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

@@ -1,0 +1,22 @@
+.profile-content {
+    max-width: 75vw;
+    padding: 1rem;
+    margin: 1rem auto;
+    background-color: gold;
+    border: 1rem solid red;
+}
+
+.profile-content-div {
+    background-color: white;
+    padding: 1rem;
+}
+
+.profile-reviews {
+    max-width: 75vw;
+    max-height: 60vh;
+    padding: 1rem;
+    margin: 0 auto;
+    background-color: gold;
+    border: 1rem solid red;
+    overflow-y: auto;
+}

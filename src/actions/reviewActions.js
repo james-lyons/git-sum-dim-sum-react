@@ -1,16 +1,16 @@
 import axios from 'axios';
 import API_URL from '../constants';
 
-const submitReview = (reviewText, restaurant_id) => {
+const submitReview = (reviewText, restaurant_id, restaurant_name) => {
+    console.log(restaurant_name)
     return dispatch => {
         return axios.post(`${ API_URL }/reviews`,
-        { reviewText, restaurant_id }, { withCredentials: true })
+        { reviewText, restaurant_id, restaurant_name }, { withCredentials: true })
             .then(res => {
                 dispatch({ type: 'REVIEW_SUBMIT_FULFILLED'});
                 window.location.reload();
             })
             .catch(err => {
-                console.log(err);
                 dispatch({ type: 'REVIEW_SUBMIT_REJECTED', payload: err.response.data })
             });
     };

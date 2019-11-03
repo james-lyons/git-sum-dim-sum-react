@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Col, Form, Button } from 'react-bootstrap';
 import { fetchRestaurant } from '../../actions/restaurantActions';
 import { submitReview } from '../../actions/reviewActions';
 import { editReview } from '../../actions/reviewActions';
@@ -15,6 +14,7 @@ class RestaurantProfile extends React.Component {
 
     componentDidMount = () => {
         this.props.fetchRestaurant(this.props.match.params.restaurant_slug);
+        console.log(process.env)
     }
 
     handleChange = (event) => {
@@ -26,7 +26,11 @@ class RestaurantProfile extends React.Component {
 
     submitReview = (event) => {
         event.preventDefault();
-        this.props.submitReview(this.state.reviewText, this.props.restaurant._id)
+        this.props.submitReview(
+            this.state.reviewText,
+            this.props.restaurant._id,
+            this.props.restaurant.name
+        );
     };
 
     editReviewDisplay = () => {
@@ -68,5 +72,4 @@ export default connect(mapStateToProps,
         submitReview,
         editReview,
         deleteReview
-    })
-(RestaurantProfile);
+    })(RestaurantProfile);

@@ -25,7 +25,7 @@ function authReducer(state = {
                 }   
             };
         case "USER_LOGIN_REJECTED":
-            return { ...state, errors: action.payload }
+            return { ...state, errors: action.payload.errors, message: action.payload.message }
         
         case "USER_LOGOUT_FULFILLED":
             return { ...state }

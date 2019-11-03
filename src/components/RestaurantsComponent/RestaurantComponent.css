@@ -5,11 +5,14 @@
     overflow-y: auto;
 }
 
-.restaurant-card {
-    background-color: goldenrod;
+.restaurants-section-cards {
+    background-color: #E50000;
+    /* background-color: gold; */
     padding: 2rem;
     margin: 1.5rem;
-    border: 1px solid black;
+    /* border: 6px solid red; */
+    color: white;
+    box-shadow: 10px 10px 8px #888888;
 }
 
 .col-row {
@@ -20,11 +23,12 @@
     justify-content: center;
     width: 85%;
     margin: 0 auto 2rem;
+    text-align: center;
 }
 
 .restaurant-image {
-    width: 13vw;
-    height: 15vh;
+    width: 15vw;
+    height: 17vh;
 }
 
 /* ----- Media Queries ----- */

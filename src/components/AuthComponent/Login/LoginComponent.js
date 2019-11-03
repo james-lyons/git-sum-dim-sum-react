@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './LoginComponent.css';
 
@@ -70,4 +71,11 @@ const LoginComponent = (props) => {
     );
 };
 
-export default LoginComponent;
+const mapStateToProps = (state) => {
+    return {
+        errors: state.authReducer.errors,
+        message: state.authReducer.message
+    }
+}
+
+export default connect(mapStateToProps, null)(LoginComponent);

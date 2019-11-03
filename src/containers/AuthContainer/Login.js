@@ -19,6 +19,7 @@ class Login extends React.Component {
 
     handleSubmit = (event) =>{
         event.preventDefault();
+        console.log('hi')
         const user = {
             email: this.state.email,
             password: this.state.password
@@ -35,7 +36,7 @@ class Login extends React.Component {
     render() {
         return (
             <>
-                <Button variant="primary auth-button" onClick={ () => this.handleModalShow() }>
+                <Button className="btn btn-light auth-button" onClick={ () => this.handleModalShow() }>
                     Login
                 </Button>
                 <LoginComponent 

@@ -7,7 +7,9 @@ class Profile extends React.Component {
     state = {
         name: null,
         email: null,
-        reviews: null
+        reviews: null,
+        reviewText: null,
+        edit_review_display: "none"
     };
 
     componentDidMount = () => {
@@ -16,13 +18,30 @@ class Profile extends React.Component {
         this.props.fetchUser(currentUser)
     }
 
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+        console.log(this.state)
+    };
+
+    editReviewDisplay = () => {
+        this.state.edit_review_display === "none" ?
+        this.setState({ edit_review_display: "" }) :
+        this.setState({ edit_review_display: "none"});
+    };
+
     render() {
         return (
             <>
                 <ProfileComponent
-                    name={this.props.name}
-                    email={this.props.email}
-                    reviews={this.props.reviews}
+                    name={ this.props.name }
+                    email={ this.props.email }
+                    reviews={ this.props.reviews }
+                    reviewText={ this.state.reviewText }
+                    edit_review_display={ this.state.edit_review_display }
+                    handleChange={ this.handleChange }
+                    editReviewDisplay={ this.editReviewDisplay }
                 />
             </>
         );

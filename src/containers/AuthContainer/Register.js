@@ -39,7 +39,7 @@ class Register extends React.Component {
     render() {
         return (
             <> 
-                <Button variant="primary auth-button" onClick={ () => this.handleModalShow() }>
+                <Button className="btn btn-light auth-button" onClick={ () => this.handleModalShow() }>
                     Register
                 </Button>
                 <RegisterComponent 

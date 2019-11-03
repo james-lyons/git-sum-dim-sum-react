@@ -13,6 +13,7 @@
 .restaurant-profile-image {
     max-width: 25vw;
     margin: 3rem;
+    border: 4px solid black;
 }
 
 .google-map-div {
@@ -25,18 +26,25 @@
 
 /* --- Content --- */
 
-.restaurant-profile-content-section {
+
+.restaurant-profile-content-div {
     background-color: red;
+    padding: 1rem;
+    margin: 3rem 3rem 1rem 3rem;   
+}
+
+.restaurant-profile-content-section {
+    background-color: white;
     padding: 2rem;
-    margin: 3rem 3rem 1rem 3rem;
+    border: 1rem solid gold;
 }
 
 /* --- Reviews --- */
 
 .restaurant-profile-reviews-section {
     background-color: red;
-    padding: 2rem;
-    margin: 1rem 3rem;
+    padding: 1rem;
+    margin: 0 3rem;
     max-height: 70vh;
     overflow-y: auto;
 }
@@ -46,10 +54,16 @@
     padding: 1rem;
 }
 
-.review-form-div {
+.review-form-section {
     background-color: red;
-    padding: 2rem;
+    padding: 1rem;
     margin: 1rem 3rem;
+}
+
+.review-form-div {
+    background-color: white;
+    padding: 2rem;
+    border: 1rem solid gold;
 }
 
 .review-card {

@@ -24,7 +24,9 @@ const SearchBarComponent = (props) => {
                                 placeholder="City Name"
                             />
                         </Form.Group>
-                        <Button type="search" className="btn btn-secondary"><i class="fa fa-search" aria-hidden="true"></i></Button>
+                        <Button type="search" className="btn btn-secondary">
+                            <i className="fa fa-search" aria-hidden="true"></i>
+                        </Button>
                     </Form.Row>
                 </Form>
             </div>
