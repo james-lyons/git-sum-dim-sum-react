@@ -1,0 +1,7 @@
+#restaurant-table-component {
+    padding-top: 1rem;
+    padding-bottom: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: auto;
+}

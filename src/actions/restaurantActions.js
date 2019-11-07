@@ -5,12 +5,10 @@ const fetchAllRestaurants = () => {
     return dispatch => {
         return axios.get(`${ API_URL }/restaurants/`, { withCredentials: true })
             .then(res => {
-                console.log(res);
                 dispatch({ type: "FETCH_RESTAURANTS_FULFILLED", payload: res.data.data})
             })
             .catch(err => {
-                console.log(err.response.data);
-                dispatch({ type: "FETCH_RESTAURANTS_REJECTED", payload: err.responsexs.data})
+                dispatch({ type: "FETCH_RESTAURANTS_REJECTED", payload: err.response.data})
             });
     };
 };
@@ -20,11 +18,9 @@ const fetchRestaurants = (name, city) => {
         return axios.get(`${ API_URL }/restaurants/search`,
             { params: { name, city }, withCredentials: true })
                 .then(res => {
-                    console.log(res);
                     dispatch({ type: "FETCH_RESTAURANTS_FULFILLED", payload: res.data.data})
                 })
                 .catch(err => {
-                    console.log(err.response.data);
                     dispatch({ type: "FETCH_RESTAURANTS_REJECTED", payload: err.response.data})
                 });
     };
@@ -37,8 +33,7 @@ const fetchRestaurant = (restaurant_slug) => {
                 dispatch({ type: "FETCH_RESTAURANT_FULFILLED", payload: res.data.data});
             })
             .catch(err => {
-                console.log(err);
-                dispatch({ type: "FETCH_RESTAURANT_REJECTED", payload: err})
+                dispatch({ type: "FETCH_RESTAURANT_REJECTED", payload: err.response.data})
             });
     };
 };

@@ -1,4 +1,4 @@
-#restaurant-profile-div {
+/* #restaurant-profile-div {
     background-color: burlywood;
     background-image: url('../../images/dumpling_icon.png');
     background-size: 50px;
@@ -8,12 +8,8 @@
     margin: 0;
 }
 
-/* ------ left section ------ */
-
 .restaurant-profile-image {
-    max-width: 25vw;
-    margin: 3rem;
-    border: 4px solid black;
+    margin: 1rem;
 }
 
 .google-map-div {
@@ -21,11 +17,6 @@
     padding: 3rem;
     margin: 3rem;
 }
-
-/* ------ right section ------ */
-
-/* --- Content --- */
-
 
 .restaurant-profile-content-div {
     background-color: red;
@@ -36,15 +27,14 @@
 .restaurant-profile-content-section {
     background-color: white;
     padding: 2rem;
+    margin: 1.2rem;
     border: 1rem solid gold;
 }
-
-/* --- Reviews --- */
 
 .restaurant-profile-reviews-section {
     background-color: red;
     padding: 1rem;
-    margin: 0 3rem;
+    /* margin: 0 3rem;
     max-height: 70vh;
     overflow-y: auto;
 }
@@ -79,4 +69,51 @@
 
 .review-edit-form {
     margin: 1rem 0;
+} */
+
+/* #restaurant-profile {
+    background-color: burlywood;
+    background-image: url('../../images/dumpling_icon.png');
+    background-size: 50px;
+} */
+
+.restaurant-profile-section {
+    padding: 2rem 0;
+}
+
+.restaurant-profile-image {
+    border: .5rem solid black;
+}
+
+.restaurant-profile-content {
+    background-color: rgb(200, 255, 120);
+    margin: 0 1rem;
+    padding: 2rem;
+    border: .5rem solid black;
+    border-radius: .2rem;
+}
+
+.restaurant-profile-reviews-section {
+    max-height: 70vh;
+    overflow-y: scroll;
+    background-color: rgb(200, 255, 120);
+    padding: 1rem;
+    border: .5rem solid red;
+    border-radius: .2rem;
+}
+
+.review-card {
+    padding: .5rem;
+}
+
+.review-form-section {
+    background-color: rgb(200, 255, 120);
+    padding: 1rem;
+    margin-top: 2rem;
+    border: .5rem solid red;
+}
+
+.review-buttons {
+    margin-top: 1rem;
+    margin-right: .5rem;
 }

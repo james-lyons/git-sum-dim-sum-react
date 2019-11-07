@@ -2,7 +2,6 @@ import axios from 'axios';
 import API_URL from '../constants';
 
 const submitReview = (reviewText, restaurant_id, restaurant_name) => {
-    console.log(restaurant_name)
     return dispatch => {
         return axios.post(`${ API_URL }/reviews`,
         { reviewText, restaurant_id, restaurant_name }, { withCredentials: true })
@@ -22,10 +21,8 @@ const editReview = (review_id, reviewText, ) => {
         { reviewText }, { withCredentials: true })
             .then(res => {
                 dispatch({ type: 'REVIEW_EDIT_FULFILLED'});
-                // window.location.reload();
             })
             .catch(err => {
-                console.log(err);
                 dispatch({ type: 'REVIEW_EDIT_REJECTED', payload: err.response.data })
             });
     };
@@ -40,7 +37,6 @@ const deleteReview = (review_id) => {
                 window.location.reload();
             })
             .catch(err => {
-                console.log(err);
                 dispatch({ type: 'REVIEW_EDIT_REJECTED', payload: err.response.data })
             });
     };

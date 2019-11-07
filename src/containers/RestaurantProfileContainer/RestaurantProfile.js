@@ -4,7 +4,8 @@ import { fetchRestaurant } from '../../actions/restaurantActions';
 import { submitReview } from '../../actions/reviewActions';
 import { editReview } from '../../actions/reviewActions';
 import { deleteReview } from '../../actions/reviewActions';
-import RestaurantProfileComponent from '../../components/RestaurantProfileComponent/RestaurantProfileComponent';
+import RestaurantProfileComponent from
+    '../../components/RestaurantProfileComponent/RestaurantProfileComponent';
 
 class RestaurantProfile extends React.Component {
     state = {
@@ -14,14 +15,12 @@ class RestaurantProfile extends React.Component {
 
     componentDidMount = () => {
         this.props.fetchRestaurant(this.props.match.params.restaurant_slug);
-        console.log(process.env)
-    }
+    };
 
     handleChange = (event) => {
         this.setState({
             reviewText: event.target.value
         });
-        console.log(this.state)
     };
 
     submitReview = (event) => {

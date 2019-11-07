@@ -4,22 +4,21 @@ import { Row, Col } from 'react-bootstrap';
 import './RestaurantComponent.css';
 
 const RestaurantsComponent = (props) => {
-
+    
     const mapRestaurants = (restaurants) => {
         const restaurantsArray = restaurants.map(restaurant => 
-            <Col
-                className="restaurants-section-cards col-3"
+            <div className="col-lg-3 col-md-6 mb-4 restaurants-section-cards"
                 onClick={ () => { props.selectRestaurant(restaurant.slug) }}
             >
-                <div className="restaurant-image-div">
-                    <img src={ restaurant.image } className="restaurant-image" alt="restaurant"></img>     
+                <div className="card h-100 restaurant-card">
+                    <img className="card-img-top" src={ restaurant.image } alt="restaurant" />
+                    <div className="card-body restaurant-card-body">
+                        <h4 className="card-title">{ restaurant.name }</h4>
+                        <p className="card-text">Address: { restaurant.address }</p>
+                        <p className="card-text">Reviews: { restaurant.reviews.length }</p>
+                    </div>
                 </div>
-                <div>
-                    <h5>{ restaurant.name }</h5>
-                    <h5>Address: { restaurant.address }</h5>
-                    <h5>Reviews: { restaurant.reviews.length}</h5>
-                </div>
-            </Col>
+          </div>
         );
         return restaurantsArray;
     };
@@ -38,7 +37,7 @@ const RestaurantsComponent = (props) => {
 const mapStateToProps = (state) => {
     return {
         restaurants: state.restaurantReducer.restaurants
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps, null)(RestaurantsComponent);

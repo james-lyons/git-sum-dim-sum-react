@@ -14,7 +14,6 @@ class Profile extends React.Component {
 
     componentDidMount = () => {
         const currentUser = localStorage.getItem('uid');
-        console.log(currentUser)
         this.props.fetchUser(currentUser)
     }
 
@@ -22,7 +21,6 @@ class Profile extends React.Component {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(this.state)
     };
 
     editReviewDisplay = () => {

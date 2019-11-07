@@ -33,4 +33,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { fetchAllRestaurants, fetchRestaurant })(Restaurants);
+export default connect(
+    mapStateToProps,
+    { fetchAllRestaurants, fetchRestaurant }
+    )(Restaurants);

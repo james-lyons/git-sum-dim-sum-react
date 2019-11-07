@@ -5,30 +5,29 @@
     overflow-y: auto;
 }
 
-.restaurants-section-cards {
-    background-color: #E50000;
-    /* background-color: gold; */
-    padding: 2rem;
-    margin: 1.5rem;
-    /* border: 6px solid red; */
-    color: white;
-    box-shadow: 10px 10px 8px #888888;
-}
-
 .col-row {
     justify-content: center;
 }
 
-.restaurant-image-div {
-    justify-content: center;
-    width: 85%;
-    margin: 0 auto 2rem;
-    text-align: center;
+.restaurant-card {
+    border: .5rem solid red !important;
 }
 
-.restaurant-image {
-    width: 15vw;
-    height: 17vh;
+.card-img-top {
+    height: 26vh;
+    border-radius: 0 !important;
 }
+
+.restaurant-card-body {
+    background-color: rgb(200, 255, 120);
+}
+
 
 /* ----- Media Queries ----- */
+
+@media screen and (max-width: 767px) {
+    #restaurants-div {
+        height: 55vh;
+        overflow-y: auto;
+    }
+}

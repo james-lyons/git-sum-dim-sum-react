@@ -13,7 +13,7 @@ function authReducer(state = {
             return {...state };
         
         case "USER_REGISTER_REJECTED":
-            return { ...state, errors: action.payload }
+            return { ...state, errors: action.payload.errors, message: action.payload.message }
 
         case "USER_LOGIN_FULFILLED":
             return {
@@ -44,7 +44,7 @@ function authReducer(state = {
             };
 
         case "FETCH_USER_REJECTED":
-            return { ...state, errors: action.payload }
+            return { ...state, errors: action.payload.errors }
 
         default:
             return { ...state };

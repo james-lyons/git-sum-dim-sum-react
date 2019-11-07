@@ -9,11 +9,15 @@ const RestaurantProfileComponent = ({ ...props }) => {
     const mapReviews = (reviews) => {
         const currentUser = localStorage.getItem('uid');
         const reviewArray = reviews.map(review => 
-            <div className="review-card">
-                <h4>Reviewer: { review.author_name }</h4>
-                <h4>{ review.reviewText }</h4>
-                { review.author === currentUser && mapButtons(review._id)}
-                { review.author === currentUser && editReview(review._id) }
+            <div class="col-md-12 mb-5">
+                <div class="card h-100 review-card">
+                    <div class="card-body">
+                        <h3 className="card-title">{ review.author_name }</h3>
+                        <p class="card-text">{ review.reviewText }</p>
+                    </div>
+                    { review.author === currentUser && mapButtons(review._id)}
+                    { review.author === currentUser && editReview(review._id) }
+                </div>
             </div>
         );
         return reviewArray;
@@ -23,8 +27,14 @@ const RestaurantProfileComponent = ({ ...props }) => {
         return (
             <>
                 <div className="edit-and-delete-buttons">
-                    <Button className="review-buttons btn btn-danger" onClick={ () => props.editReviewDisplay() }>Edit</Button>
-                    <Button className="review-buttons btn btn-danger" onClick={ () => props.deleteReview(review_id) }>Delete</Button>
+                    <Button className="review-buttons btn btn-danger"
+                        onClick={ () => props.editReviewDisplay() }>
+                            Edit
+                    </Button>
+                    <Button className="review-buttons btn btn-danger"
+                        onClick={ () => props.deleteReview(review_id) }>
+                            Delete
+                    </Button>
                 </div>
             </>
         );
@@ -55,81 +65,73 @@ const RestaurantProfileComponent = ({ ...props }) => {
 
     return (
         <>
-            <div id="restaurant-profile-div">
-                <Row id="restaurant-profile-row">
-                    <Col className="col-4 restaurant-profile-left">
-                        <Row>
-                            <img className="restaurant-profile-image" src={ props.restaurant.image } alt="restaurant"/>
-                        </Row>
-                    </Col>
-                    <Col className="col-8 restaurant-profile-right">
-                        <Row>
-                            <Col>
-                                <div className="restaurant-profile-content-div">
-                                    <div className="restaurant-profile-content-section">
-                                        <h5>Name: { props.restaurant.name }</h5>
-                                        <h5>Address: { props.restaurant.address }</h5>
-                                        <h5>Phone Number: { props.restaurant.phone }</h5>
-                                        <h5>Hours: { props.restaurant.hours }</h5>
-                                        <h5>Menu Link: <span src={ props.restaurant.menuLink }>{ props.restaurant.menuLink }</span></h5>
-                                    </div>
-                                </div>
-                            </Col>                    
-                        </Row>
-                        <Row>
-                            <Col className="col-12">
-                                <div className="restaurant-profile-reviews-section">
-                                    <div className="restaurant-profile-reviews-div">
-                                        { props.restaurant && mapReviews(props.restaurant.reviews) }
-                                    </div>
-                                </div>                            
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className="col-12">
-                                <div className="review-form-section">
-                                    <div className="review-form-div">
-                                        <h3>Leave a review!</h3>
-                                        { props.reviewErrors && props.reviewErrors.map((err, i) => (
+            <div id="restaurant-profile">
+                <div class="container">
+                    <div class="row align-items-center my-12 restaurant-profile-section">
+                        <div class="col-4">
+                            <img class="img-fluid rounded mb-4 restaurant-profile-image" src={ props.restaurant.image } alt="" />
+                        </div>
+                        <div className="col-lg-7 restaurant-profile-content">
+                            <p>Name: { props.restaurant.name }</p>
+                            <p>Address: { props.restaurant.address }</p>
+                            <p>Phone Number: { props.restaurant.phone }</p>
+                            <p>Hours: { props.restaurant.hours }</p>
+                            <p>Menu Link: <a
+                                href={ props.restaurant.menuLink }>
+                                    { props.restaurant.menuLink }
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="restaurant-profile-reviews-section col-12">
+                        <div class="row review-container">
+                            { props.restaurant && mapReviews(props.restaurant.reviews) }
+                        </div>
+                    </div>
+                    <Row>
+                        <Col className="col-12">
+                            <div className="review-form-section">
+                                <div className="review-form-div">
+                                    <h3>Leave a review!</h3>
+                                    { props.reviewErrors && props.reviewErrors.map((err, i) => (
+                                        <div className="alert alert-danger alert-dismissible fade show"
+                                            style={{ width: '100%' }} role="alert" key={ i }>
+                                            { err.message }
+                                                <button className="close" data-dismiss="alert">
+                                                    <spam aria-hidden="true">&times;</spam>
+                                                </button>
+                                        </div>
+                                        ))}
+                                        { props.reviewMessage && 
                                             <div className="alert alert-danger alert-dismissible fade show"
-                                                style={{ width: '100%' }} role="alert" key={ i }>
-                                                { err.message }
-                                                    <button className="close" data-dismiss="alert">
-                                                        <spam aria-hidden="true">&times;</spam>
-                                                    </button>
+                                                style={{ width: '100% '}} role="alert">
+                                                { props.reviewMessage }
+                                                <button className="close" data-dismiss="alert">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                             </div>
-                                            ))}
-                                            { props.reviewMessage && 
-                                                <div className="alert alert-danger alert-dismissible fade show"
-                                                    style={{ width: '100% '}} role="alert">
-                                                    { props.reviewMessage }
-                                                    <button className="close" data-dismiss="alert">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                            }
-                                        <Form onSubmit={ props.submitReview }>
-                                            <Form.Row>
-                                                <Form.Group className="col-12" controlId="edit-review">
-                                                    <Form.Control
-                                                        required
-                                                        name="reviewText"
-                                                        type="text"
-                                                        as="textarea"
-                                                        rows="4"
-                                                        onChange={ props.handleChange }
-                                                        placeholder="Leave a review!"
-                                                    />
-                                                </Form.Group>
-                                            </Form.Row>
-                                            <Button className="btn btn-danger" type="submit">Submit</Button>
-                                        </Form>
-                                    </div>
+                                        }
+                                    <Form onSubmit={ props.submitReview }>
+                                        <Form.Row>
+                                            <Form.Group className="col-12" controlId="edit-review">
+                                                <Form.Control
+                                                    required
+                                                    name="Text"
+                                                    type="text"
+                                                    as="textarea"
+                                                    rows="4"
+                                                    onChange={ props.handleChange }
+                                                    placeholder="Leave a review!"
+                                                />
+                                            </Form.Group>
+                                        </Form.Row>
+                                        <Button className="btn btn-danger" type="submit">Submit</Button>
+                                    </Form>
                                 </div>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
+                            </div>
+                        </Col>
+                    </Row>
+                </div>
             </div>
         </>
     );

@@ -8,7 +8,7 @@ import './NavBar.css';
 
 const NavBar = (props) => {
 
-    const currentUser = localStorage.getItem('uid');
+    const userRole = localStorage.getItem('user_role');
 
     const links = (
         <>
@@ -59,9 +59,48 @@ const NavBar = (props) => {
         </>
     );
 
+    const adminLinks = (
+        <>
+            <Navbar className="nav-bar" collapseOnSelect expand="lg">
+                <Navbar.Brand href='/'>
+                    <span>
+                        <img className="nav-icon"src="./dumpling_icon.png" alt="icon"/>
+                    </span> 
+                        Git Sum Dim Sum
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className='mr-auto'>
+                    </Nav>
+                    <Nav>
+                        <Button className="admin-page-button btn btn-light"
+                            onClick={ () => props.history.push('/admin') }>
+                                Admin Page
+                        </Button>
+                        <Button className="logout-button btn btn-light"
+                            onClick={ userLogout }>
+                                Logout
+                        </Button>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        </>
+    );
+
+    const renderSwitch = (userRole) => {
+        switch(userRole) {
+            case 'user':
+                return authLinks
+            case 'admin':
+                return adminLinks
+            default:
+                return links
+        };
+    };
+
     return (
         <>
-            { currentUser ? authLinks : links }
+            { renderSwitch(userRole) }
         </>
     );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './RegisterComponent.css';
 
@@ -88,4 +89,11 @@ const RegisterComponent = (props) => {
     );
 };
 
-export default RegisterComponent;
+const mapStateToProps = (state) => {
+    return {
+        errors: state.authReducer.errors,
+        message: state.authReducer.message
+    };
+};
+
+export default connect(mapStateToProps, null)(RegisterComponent);
