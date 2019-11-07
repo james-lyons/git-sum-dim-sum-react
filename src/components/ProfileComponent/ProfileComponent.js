@@ -9,8 +9,8 @@ const ProfileComponent = (props) => {
     const mapReviews = (reviews) => {
         const currentUser = localStorage.getItem('uid');
         const reviewArray = reviews.map(review =>
-            <div className="review-card">
-                <p>{ review.restaurant_name }</p>
+            <div className="profile-review-card">
+                <h4>{ review.restaurant_name }</h4>
                 <p>{ review.reviewText }</p>
                 { review.author === currentUser && mapButtons(review._id)}
                 { review.author === currentUser && editReview(review._id) }
@@ -69,8 +69,8 @@ const ProfileComponent = (props) => {
             <div className="profile-div">
                 <div className="profile-content">
                     <div className="profile-content-div">
-                        <h3>Hello, { props.name }</h3>
-                        <h3>Reviews you've left: { props.reviews.length }</h3>
+                        <h2>Hello, { props.name }</h2>
+                        <h4>Reviews you've left: { props.reviews.length }</h4>
                     </div>
                 </div>
                 <div className="profile-reviews">

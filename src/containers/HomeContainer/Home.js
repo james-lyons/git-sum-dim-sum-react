@@ -12,8 +12,10 @@ class Home extends React.Component {
     render() {
         return (
             <>
-                <SearchBar />
-                <Restaurants history={ this.props.history }/>
+                <div id="home-div">
+                    <SearchBar />
+                    <Restaurants history={ this.props.history }/>
+                </div>
             </>
         );
     };

@@ -4,8 +4,6 @@ import Home from '../containers/HomeContainer/Home.js';
 import RestaurantProfile from '../containers/RestaurantProfileContainer/RestaurantProfile';
 import Profile from '../containers/ProfileContainer/Profile.js';
 import AdminPage from '../containers/AdminContainer/AdminPage';
-import UserTableComponent from '../components/AdminComponent/UserTableComponent/UserTableComponent';
-import RestaurantTableComponent from '../components/AdminComponent/RestaurantTableComponent/RestaurantTableComponent';
 
 export default withRouter(() => {
     const currentUser = localStorage.getItem('uid');

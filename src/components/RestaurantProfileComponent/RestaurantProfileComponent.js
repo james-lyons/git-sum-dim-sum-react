@@ -9,11 +9,11 @@ const RestaurantProfileComponent = ({ ...props }) => {
     const mapReviews = (reviews) => {
         const currentUser = localStorage.getItem('uid');
         const reviewArray = reviews.map(review => 
-            <div class="col-md-12 mb-5">
-                <div class="card h-100 review-card">
-                    <div class="card-body">
+            <div className="col-md-12 mb-5">
+                <div className="card h-100 review-card">
+                    <div className="card-body">
                         <h3 className="card-title">{ review.author_name }</h3>
-                        <p class="card-text">{ review.reviewText }</p>
+                        <p className="card-text">{ review.reviewText }</p>
                     </div>
                     { review.author === currentUser && mapButtons(review._id)}
                     { review.author === currentUser && editReview(review._id) }
@@ -66,10 +66,10 @@ const RestaurantProfileComponent = ({ ...props }) => {
     return (
         <>
             <div id="restaurant-profile">
-                <div class="container">
-                    <div class="row align-items-center my-12 restaurant-profile-section">
-                        <div class="col-4">
-                            <img class="img-fluid rounded mb-4 restaurant-profile-image" src={ props.restaurant.image } alt="" />
+                <div className="container">
+                    <div className="row align-items-center my-12 restaurant-profile-section">
+                        <div className="col-4 restaurant-profile-image-div">
+                            <img className="img-fluid rounded mb-4 restaurant-profile-image" src={ props.restaurant.image } alt="" />
                         </div>
                         <div className="col-lg-7 restaurant-profile-content">
                             <p>Name: { props.restaurant.name }</p>
@@ -84,7 +84,7 @@ const RestaurantProfileComponent = ({ ...props }) => {
                         </div>
                     </div>
                     <div className="restaurant-profile-reviews-section col-12">
-                        <div class="row review-container">
+                        <div className="row review-container">
                             { props.restaurant && mapReviews(props.restaurant.reviews) }
                         </div>
                     </div>

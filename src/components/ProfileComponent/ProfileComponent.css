@@ -2,8 +2,9 @@
 .profile-content {
     max-width: 75vw;
     padding: 1rem;
-    margin: 1rem auto;
-    background-color: gold;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    background-color: rgb(200, 255, 120);
     border: 1rem solid red;
 }
 
@@ -12,12 +13,19 @@
     padding: 1rem;
 }
 
+.profile-review-card {
+    background-color: white;
+    border: .18rem solid black;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
 .profile-reviews {
     max-width: 75vw;
-    max-height: 60vh;
+    max-height: 61vh;
     padding: 1rem;
     margin: 0 auto;
-    background-color: gold;
+    background-color: rgb(200, 255, 120);
     border: 1rem solid red;
     overflow-y: auto;
 }

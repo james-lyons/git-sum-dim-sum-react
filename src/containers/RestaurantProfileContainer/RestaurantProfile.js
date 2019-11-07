@@ -6,6 +6,7 @@ import { editReview } from '../../actions/reviewActions';
 import { deleteReview } from '../../actions/reviewActions';
 import RestaurantProfileComponent from
     '../../components/RestaurantProfileComponent/RestaurantProfileComponent';
+import './RestaurantProfile.css';
 
 class RestaurantProfile extends React.Component {
     state = {
@@ -41,17 +42,19 @@ class RestaurantProfile extends React.Component {
     render() {
         return (
             <>
-                <RestaurantProfileComponent
-                    reviewErrors={ this.props.reviewErrors }
-                    reviewMessage={ this.props.reviewMessage }
-                    reviewText={ this.state.reviewText }
-                    edit_review_display={ this.state.edit_review_display }
-                    handleChange={ this.handleChange }
-                    editReviewDisplay={ this.editReviewDisplay }
-                    submitReview={ this.submitReview }
-                    editReview={ this.editReview }
-                    deleteReview={ this.deleteReview }
-                />
+                <div id="restaurant-profile-div">
+                    <RestaurantProfileComponent
+                        reviewErrors={ this.props.reviewErrors }
+                        reviewMessage={ this.props.reviewMessage }
+                        reviewText={ this.state.reviewText }
+                        edit_review_display={ this.state.edit_review_display }
+                        handleChange={ this.handleChange }
+                        editReviewDisplay={ this.editReviewDisplay }
+                        submitReview={ this.submitReview }
+                        editReview={ this.editReview }
+                        deleteReview={ this.deleteReview }
+                    />
+                </div>
             </>
         );
     };

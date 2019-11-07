@@ -1,0 +1,6 @@
+#restaurant-profile-div {
+    height: 160vh;
+    width: 100vw;
+    background-image: url('../../images/dim-sum-background-5.jpg');
+    background-size: contain;
+}

@@ -6,12 +6,8 @@
     overflow-y: scroll;
 }
 
-.restaurant-submit-admin-form {
-    width: 500px;
-}
-
 @media screen and (max-width: 767px) {
-    .restaurant-submit-admin-form {
-        width: 225px !important;
+    #create-dim-sum-form-div {
+        max-width: 225px !important;
     }
 }

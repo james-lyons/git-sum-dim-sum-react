@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ProfileComponent from '../../components/ProfileComponent/ProfileComponent';
 import { fetchUser } from '../../actions/authActions';
+import './Profile.css';
 
 class Profile extends React.Component {
     state = {
@@ -32,15 +33,17 @@ class Profile extends React.Component {
     render() {
         return (
             <>
-                <ProfileComponent
-                    name={ this.props.name }
-                    email={ this.props.email }
-                    reviews={ this.props.reviews }
-                    reviewText={ this.state.reviewText }
-                    edit_review_display={ this.state.edit_review_display }
-                    handleChange={ this.handleChange }
-                    editReviewDisplay={ this.editReviewDisplay }
-                />
+                <div id="profile-div">
+                    <ProfileComponent
+                        name={ this.props.name }
+                        email={ this.props.email }
+                        reviews={ this.props.reviews }
+                        reviewText={ this.state.reviewText }
+                        edit_review_display={ this.state.edit_review_display }
+                        handleChange={ this.handleChange }
+                        editReviewDisplay={ this.editReviewDisplay }
+                    />
+                </div>
             </>
         );
     };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, withRouter, Redirect } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AdminSideBarComponent from '../../components/AdminComponent/SideBarComponent/AdminSideBarComponent';
 import AddRestaurantComponent from '../../components/AdminComponent/AddRestaurantComponent/AddRestaurantComponent';
@@ -7,6 +7,7 @@ import UserTableComponent from '../../components/AdminComponent/UserTableCompone
 import RestaurantTableComponent from '../../components/AdminComponent/RestaurantTableComponent/RestaurantTableComponent';
 import { fetchUsers, fetchRestaurants } from '../../actions/adminActions';
 import '../../CSS/sb_bootstrap/sb-admin.css';
+import './AdminPage.css';
 
 class AdminPage extends React.Component {
     state = {
@@ -29,7 +30,7 @@ class AdminPage extends React.Component {
     render() {
         return (
             <>
-                <div id="wrapper">
+                <div id="wrapper" className="admin-page-div">
                     <AdminSideBarComponent />
                         <Route exact path="/admin" component={ AddRestaurantComponent } />
                         <Route path="/admin/user_table" component={ UserTableComponent } />

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RestaurantsComponents from '../../components/RestaurantsComponent/RestaurantsComponents';
 import { fetchAllRestaurants, fetchRestaurant } from '../../actions/restaurantActions';
+import './Restaurants.css';
 
 class Restaurants extends React.Component {
     state = {
@@ -21,7 +22,9 @@ class Restaurants extends React.Component {
     render() {
         return (
             <>
-                <RestaurantsComponents selectRestaurant={ this.selectRestaurant }/>
+                <div id="restaurants-div">
+                    <RestaurantsComponents selectRestaurant={ this.selectRestaurant }/>
+                </div>
             </>
         );
     };
