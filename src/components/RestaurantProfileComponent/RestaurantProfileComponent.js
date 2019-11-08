@@ -21,6 +21,24 @@ const RestaurantProfileComponent = ({ ...props }) => {
         const reviewArray = reviews.map(review => 
             <div className="col-md-12 mb-5">
                 <div className="card h-100 review-card">
+                    { props.reviewErrors && props.reviewErrors.map((err, i) => (
+                        <div className="alert alert-danger alert-dismissible fade show"
+                            style={{ width: '100%' }} role="alert" key={ i }>
+                            { err.message }
+                                <button className="close" data-dismiss="alert">
+                                    <spam aria-hidden="true">&times;</spam>
+                                </button>
+                        </div>
+                        ))}
+                        { props.reviewMessage && 
+                            <div className="alert alert-danger alert-dismissible fade show"
+                                style={{ width: '100% '}} role="alert">
+                                { props.reviewMessage }
+                                <button className="close" data-dismiss="alert">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        }
                     <div className="card-body">
                         <h3 className="card-title">{ review.author_name }</h3>
                         <p className="card-text">{ review.reviewText }</p>

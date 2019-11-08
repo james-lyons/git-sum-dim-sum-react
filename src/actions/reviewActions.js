@@ -15,7 +15,7 @@ const submitReview = (reviewText, restaurant_id, restaurant_name) => {
     };
 };
 
-const editReview = (review_id, reviewText, ) => {
+const editReview = (review_id, reviewText) => {
     return dispatch => {
         return axios.put(`${ API_URL }/reviews/${ review_id }`,
         { reviewText }, { withCredentials: true })
@@ -31,7 +31,7 @@ const editReview = (review_id, reviewText, ) => {
 const deleteReview = (review_id) => {
     return dispatch => {
         return axios.delete(`${ API_URL }/reviews/${ review_id }`,
-        { review_id }, { withCredentials: true })
+        { withCredentials: true })
             .then(res => {
                 dispatch({ type: 'REVIEW_EDIT_FULFILLED'});
                 window.location.reload();
