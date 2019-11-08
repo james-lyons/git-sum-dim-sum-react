@@ -6,6 +6,16 @@ import './RestaurantProfileComponent.css';
 
 const RestaurantProfileComponent = ({ ...props }) => {
 
+    const reviews = () => {
+        return (
+            <div className="restaurant-profile-reviews-section col-12">
+                <div className="row review-container">
+                    { props.restaurant && mapReviews(props.restaurant.reviews) }
+                </div>
+            </div>
+        ); 
+    };
+
     const mapReviews = (reviews) => {
         const currentUser = localStorage.getItem('uid');
         const reviewArray = reviews.map(review => 
@@ -69,7 +79,8 @@ const RestaurantProfileComponent = ({ ...props }) => {
                 <div className="container">
                     <div className="row align-items-center my-12 restaurant-profile-section">
                         <div className="col-4 restaurant-profile-image-div">
-                            <img className="img-fluid rounded mb-4 restaurant-profile-image" src={ props.restaurant.image } alt="" />
+                            <img className="img-fluid rounded mb-4 restaurant-profile-image"
+                                src={ props.restaurant.image } alt="" />
                         </div>
                         <div className="col-lg-7 restaurant-profile-content">
                             <p>Name: { props.restaurant.name }</p>
@@ -83,11 +94,7 @@ const RestaurantProfileComponent = ({ ...props }) => {
                             </p>
                         </div>
                     </div>
-                    <div className="restaurant-profile-reviews-section col-12">
-                        <div className="row review-container">
-                            { props.restaurant && mapReviews(props.restaurant.reviews) }
-                        </div>
-                    </div>
+                    { props.restaurant.reviews.length && reviews() }
                     <Row>
                         <Col className="col-12">
                             <div className="review-form-section">

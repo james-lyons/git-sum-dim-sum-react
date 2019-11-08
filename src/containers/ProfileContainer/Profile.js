@@ -8,6 +8,7 @@ class Profile extends React.Component {
     state = {
         name: null,
         email: null,
+        profile_image: null,
         reviews: null,
         reviewText: null,
         edit_review_display: "none"
@@ -15,8 +16,8 @@ class Profile extends React.Component {
 
     componentDidMount = () => {
         const currentUser = localStorage.getItem('uid');
-        this.props.fetchUser(currentUser)
-    }
+        this.props.fetchUser(currentUser);
+    };
 
     handleChange = (event) => {
         this.setState({
@@ -35,9 +36,7 @@ class Profile extends React.Component {
             <>
                 <div id="profile-div">
                     <ProfileComponent
-                        name={ this.props.name }
-                        email={ this.props.email }
-                        reviews={ this.props.reviews }
+                        user={ this.props.user }
                         reviewText={ this.state.reviewText }
                         edit_review_display={ this.state.edit_review_display }
                         handleChange={ this.handleChange }
@@ -51,9 +50,7 @@ class Profile extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        name: state.authReducer.user.name,
-        email: state.authReducer.user.email,
-        reviews: state.authReducer.user.reviews
+        user: state.authReducer.user
     };
 };
 

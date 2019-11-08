@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Button, Form, Col, Image } from 'react-bootstrap';
 import './RegisterComponent.css';
 
 const RegisterComponent = (props) => {
@@ -80,7 +80,21 @@ const RegisterComponent = (props) => {
                                     />
                                 </Form.Group>
                             </Form.Row>
-                            <Button type="submit">Submit</Button>
+                            <Form.Row>
+                                <Form.Group className="col-12" controlId="profile_image">
+                                    <Form.Label>profile Image</Form.Label>
+                                    <Form.Control 
+                                        required
+                                        name="profile_image"
+                                        type="text"
+                                        onChange={ props.handleChange }
+                                    />
+                                </Form.Group>
+                                <Col id="profile_image" as={Col} md="3" xs={6}>
+                                    <Image src={ props.profile_image } thumbnail />
+                                </Col>    
+                            </Form.Row>
+                            <Button className="btn btn-danger" type="submit">Submit</Button>
                         </Form>
                     </div>
                 </Modal.Body>

@@ -21,11 +21,34 @@
 }
 
 .profile-reviews {
-    max-width: 75vw;
+    max-width: 100%;
     max-height: 61vh;
     padding: 1rem;
     margin: 0 auto;
     background-color: rgb(200, 255, 120);
     border: 1rem solid red;
     overflow-y: auto;
+}
+
+.profile-review-edit-form {
+    margin-top: 1.5rem;
+}
+
+.user-profile-image {
+    border: .5rem solid black;
+}
+
+@media screen and (max-width: 767px) {
+    .profile-content {
+        min-width: 92%;
+    }
+
+    .profile-reviews {
+        min-width: 100%;
+    }
+
+    .user-profile-image-div {
+        min-width: 90%;
+        margin: 0 auto;
+    }
 }

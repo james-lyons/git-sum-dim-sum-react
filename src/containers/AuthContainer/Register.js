@@ -9,6 +9,7 @@ class Register extends React.Component {
     state = {
         name: null,
         email: null,
+        profile_image: null,
         password: null,
         password2: null,
         modalShow: false,
@@ -16,7 +17,7 @@ class Register extends React.Component {
     };
 
     handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value })
+        this.setState({ [event.target.name]: event.target.value });
     };
 
     handleSubmit = (event) => {
@@ -24,9 +25,10 @@ class Register extends React.Component {
         const user = {
             name: this.state.name,
             email: this.state.email,
+            profile_image: this.state.profile_image,
             password: this.state.password,
             password2: this.state.password2
-        }
+        };
         this.props.userRegister(user);
     };
 
@@ -43,6 +45,7 @@ class Register extends React.Component {
                     Register
                 </Button>
                 <RegisterComponent 
+                    profile_image={ this.state.profile_image }
                     show={ this.state.modalShow }
                     handleChange={ this.handleChange }
                     handleSubmit={ this.handleSubmit }

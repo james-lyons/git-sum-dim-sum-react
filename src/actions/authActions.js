@@ -19,9 +19,10 @@ const userLogin = (user) => {
         return axios.post(`${ API_URL }/auth/login`, user, { withCredentials: true })
             .then(res => {
                 window.location.reload();
-                localStorage.setItem('uid', res.data.data._id)
-                localStorage.setItem('user_role', res.data.data.role)
-                dispatch({ type: "USER_LOGIN_FULFILLED", payload: res.data })
+                console.log(res.data.data);
+                localStorage.setItem('uid', res.data.data._id);
+                localStorage.setItem('user_role', res.data.data.role);
+                dispatch({ type: "USER_LOGIN_FULFILLED", payload: res.data.data });
             })
             .catch(err => {
                 dispatch({ type: "USER_LOGIN_REJECTED", payload: err.response.data })

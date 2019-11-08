@@ -1,7 +1,8 @@
 function authReducer(state = {
     user: {
-        name: "",
-        email: "",
+        name: '',
+        email: '',
+        profile_image: '',
         reviews: [],
     },
     errors: null,
@@ -16,14 +17,8 @@ function authReducer(state = {
             return { ...state, errors: action.payload.errors, message: action.payload.message }
 
         case "USER_LOGIN_FULFILLED":
-            return {
-                ...state,
-                user: {
-                    name: action.payload.name,
-                    email: action.payload.email,
-                    reviews: action.payload.reviews
-                }   
-            };
+            return { ...state, user: action.payload };
+
         case "USER_LOGIN_REJECTED":
             return { ...state, errors: action.payload.errors, message: action.payload.message }
         
@@ -34,14 +29,7 @@ function authReducer(state = {
             return { ...state, errors: action.payload }
 
         case "FETCH_USER_FULFILLED":
-            return {
-                ...state,
-                user: {
-                    name: action.payload.name,
-                    email: action.payload.email,
-                    reviews: action.payload.reviews
-                }
-            };
+            return { ...state, user: action.payload };
 
         case "FETCH_USER_REJECTED":
             return { ...state, errors: action.payload.errors }

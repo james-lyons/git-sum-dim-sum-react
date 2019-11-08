@@ -24,7 +24,7 @@ const ProfileComponent = (props) => {
             <>
                 <div className="edit-and-delete-buttons">
                     <Button className="review-buttons btn btn-danger"
-                        onClick={ () => props.editReviewDisplay() }
+                        onClick={ () => props.editReview(props.user) }
                     >
                             Edit
                     </Button>
@@ -40,7 +40,7 @@ const ProfileComponent = (props) => {
 
     const editReview = (review_id) => {
         return (
-            <Col className="col-12 review-edit-form"
+            <Col className="col-12 profile-review-edit-form"
                 style={{ display: props.edit_review_display }}>
                 <Form onSubmit={ () => props.editReview(review_id, props.reviewText )}>
                     <Form.Row>
@@ -66,16 +66,23 @@ const ProfileComponent = (props) => {
 
     return (
         <>
-            <div className="profile-div">
-                <div className="profile-content">
-                    <div className="profile-content-div">
-                        <h2>Hello, { props.name }</h2>
-                        <h4>Reviews you've left: { props.reviews.length }</h4>
+            <div className="container profile-div">
+                <div className="row align-items-center my-12 ">
+                    <div className="col-3 user-profile-image-div">
+                        <img className="img-fluid rounded mb-4 user-profile-image"
+                            src={ props.user.profile_image } alt=""
+                        />
+                    </div>
+                    <div className="col-lg-8 profile-content">
+                        <div className="profile-content-div">
+                            <h2>Hello, { props.user.name }</h2>
+                            <h4>Reviews you've left: { props.user.reviews.length }</h4>
+                        </div>
                     </div>
                 </div>
                 <div className="profile-reviews">
                     <h2>Your reviews</h2>
-                    { props.reviews && mapReviews(props.reviews) }
+                    { props.user.reviews && mapReviews(props.user.reviews) }
                 </div>
             </div>
         </>

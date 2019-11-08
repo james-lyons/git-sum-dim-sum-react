@@ -131,7 +131,7 @@ class AdminPageComponent extends React.Component {
                                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             </Form.Group>  
                             <Form.Group className="col-12" controlId="restaurant_image">
-                            <Form.Label>Restaurant Image</Form.Label>
+                                <Form.Label>Restaurant Image</Form.Label>
                                 <Form.Control 
                                     required
                                     name="restaurant_image"

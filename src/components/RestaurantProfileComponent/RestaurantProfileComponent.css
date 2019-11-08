@@ -40,6 +40,10 @@
     margin-right: .5rem;
 }
 
+.review-edit-form {
+    margin-top: 1.5rem;
+}
+
 @media screen and (max-width: 767px) {
     .restaurant-profile-image-div {
         min-width: 100%;
