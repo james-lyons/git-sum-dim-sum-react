@@ -3,5 +3,5 @@
     width: 100vw;
     background-image: url('../../images/dim-sum-background-5.jpg');
     background-attachment: fixed;
-    background-size: contain;
+    background-size: cover;
 }

@@ -16,29 +16,40 @@ const RestaurantProfileComponent = ({ ...props }) => {
         ); 
     };
 
+    const displayErrors = (errors, message) => {
+        return (
+            <>
+                { errors && errors.map((err, i) => (
+                    <div className="alert alert-danger alert-dismissible fade show"
+                        style={{ width: '100%' }} role="alert" key={ i }>
+                        { err.message }
+                            <button className="close" data-dismiss="alert">
+                                <spam aria-hidden="true">&times;</spam>
+                            </button>
+                    </div>
+                    ))
+                }
+                { message && 
+                    <div className="alert alert-danger alert-dismissible fade show"
+                        style={{ width: '100% '}} role="alert">
+                        { message }
+                        <button className="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
+            </>
+        );
+    };
+
     const mapReviews = (reviews) => {
         const currentUser = localStorage.getItem('uid');
         const reviewArray = reviews.map(review => 
             <div className="col-md-12 mb-5">
                 <div className="card h-100 review-card">
-                    { props.reviewErrors && props.reviewErrors.map((err, i) => (
-                        <div className="alert alert-danger alert-dismissible fade show"
-                            style={{ width: '100%' }} role="alert" key={ i }>
-                            { err.message }
-                                <button className="close" data-dismiss="alert">
-                                    <spam aria-hidden="true">&times;</spam>
-                                </button>
-                        </div>
-                        ))}
-                        { props.reviewMessage && 
-                            <div className="alert alert-danger alert-dismissible fade show"
-                                style={{ width: '100% '}} role="alert">
-                                { props.reviewMessage }
-                                <button className="close" data-dismiss="alert">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        }
+                    { props.editReviewErrors || props.editReviewMessage &&
+                        displayErrors(props.editReviewErrors, props.editReviewMessage )
+                    }
                     <div className="card-body">
                         <h3 className="card-title">{ review.author_name }</h3>
                         <p className="card-text">{ review.reviewText }</p>
@@ -71,7 +82,7 @@ const RestaurantProfileComponent = ({ ...props }) => {
     const editReview = (review_id) => {
         return (
             <Col className="col-12 review-edit-form" style={{ display: props.edit_review_display }}>
-                <Form onSubmit={ () => props.editReview(review_id, props.reviewText )}>
+                <Form onSubmit={ () => props.editReview(review_id, props.reviewText)}>
                     <Form.Row>
                         <Form.Group className="col-12" controlId="edit-review">
                             <Form.Control
@@ -118,24 +129,9 @@ const RestaurantProfileComponent = ({ ...props }) => {
                             <div className="review-form-section">
                                 <div className="review-form-div">
                                     <h3>Leave a review!</h3>
-                                    { props.reviewErrors && props.reviewErrors.map((err, i) => (
-                                        <div className="alert alert-danger alert-dismissible fade show"
-                                            style={{ width: '100%' }} role="alert" key={ i }>
-                                            { err.message }
-                                                <button className="close" data-dismiss="alert">
-                                                    <spam aria-hidden="true">&times;</spam>
-                                                </button>
-                                        </div>
-                                        ))}
-                                        { props.reviewMessage && 
-                                            <div className="alert alert-danger alert-dismissible fade show"
-                                                style={{ width: '100% '}} role="alert">
-                                                { props.reviewMessage }
-                                                <button className="close" data-dismiss="alert">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                        }
+                                    { props.reviewErrors || props.reviewMessage &&
+                                        displayErrors(props.reviewErrors, props.reviewMessage )
+                                    }
                                     <Form onSubmit={ props.submitReview }>
                                         <Form.Row>
                                             <Form.Group className="col-12" controlId="edit-review">
@@ -165,7 +161,11 @@ const RestaurantProfileComponent = ({ ...props }) => {
 const mapStateToProps = (state) => {
     return {
         restaurant: state.restaurantReducer.restaurant,
-        user: state.authReducer.user
+        user: state.authReducer.user,
+        reviewErrors: state.reviewReducer.errors,
+        reviewMessage: state.reviewReducer.message,
+        editReviewErrors: state.reviewReducer.editReviewErrors,
+        editReviewMessage: state.reviewReducer.editReviewmessage
     };
 };
 

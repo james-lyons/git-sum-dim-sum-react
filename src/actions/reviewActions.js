@@ -38,6 +38,7 @@ const deleteReview = (review_id) => {
             })
             .catch(err => {
                 dispatch({ type: 'REVIEW_EDIT_REJECTED', payload: err.response.data })
+                console.log(err.response.data)
             });
     };
 }

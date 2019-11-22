@@ -44,8 +44,6 @@ class RestaurantProfile extends React.Component {
             <>
                 <div id="restaurant-profile-div">
                     <RestaurantProfileComponent
-                        reviewErrors={ this.props.reviewErrors }
-                        reviewMessage={ this.props.reviewMessage }
                         reviewText={ this.state.reviewText }
                         edit_review_display={ this.state.edit_review_display }
                         handleChange={ this.handleChange }
@@ -63,8 +61,7 @@ class RestaurantProfile extends React.Component {
 const mapStateToProps = (state) => {
     return {
         restaurant: state.restaurantReducer.restaurant,
-        reviewErrors: state.reviewReducer.errors,
-        reviewMessage: state.reviewReducer.message
+
     };
 };
 
